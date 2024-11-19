@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Music App</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css')}}">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-text">
+              <h1>Music Streaming App</h1>
+            </span>
+        </nav>
+        <center><h1>User Register</h1></center>
+        <div class="form-group">
+            <div class="container">
+                <form class="myForm" method="post" action="/register">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input class="form-control input-lg" type="name" name="username" placeholder="name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control input-lg" type="email" name="email" id="email" placeholder="email" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control input-lg" type="password" name="password" placeholder="password" required />
+                    </div>
+                    <div class="form-group-bt">
+                        <input type="submit" name="submit" class="btn btn-success btn-lg" value="Register"/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

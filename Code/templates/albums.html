@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>All Albums</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css')}}">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-text"><h1>Administrator</h1></span>
+            <div class="navbar-nav" >
+                <a class="nav-item nav-link" href="/admin_dashboard"><h3>Dashboard</h3></a>
+            </div>
+        </nav>
+        <h1>All Albums</h1>
+
+        <form class="form-inline d-flex justify-content-center md-form form-sm mt-0" action="/search">     
+          <input class="form-control form-control-sm ml-3 w-75" type="text" name="q" placeholder="Search Albums">
+        </form>
+        <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                {% for album in album_list %}
+                <div class="card border-secondary mb-3">
+                    <div class="card-body">
+                      <h1 class="card-title">{{ album[0] }}</h1>
+                      {% for record in alb.query.filter_by(aname=album[0]).all() %}
+                      <div class="card-text">
+                        <h4>{{ sg.query.filter_by(song_id=record.song_id).first().name }}</h4>
+                        <form method="post">
+                          <button type="submit" name="sid" value={{record.song_id}} formaction="/show_lyrics">View Lyrics</button>
+                          <button type="submit" name="sid" value={{record.song_id}} formaction="/del_song" >Flag / Delete</button>
+                        </form>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </br>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+    </body>
+</html>

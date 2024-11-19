@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create playlist</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css')}}">
+        <style>
+            form{
+                text-align: center;
+
+            }
+            input{
+                height: 5rem;
+                width: 30rem;
+                background-color:darkgray;
+            }
+            .container{
+                overflow-y:scroll ;white-space:wrap;
+                justify-content: center; display:flex;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-text"><h1>Normal user page</h1></span>
+            <div class="navbar-nav" >
+                <form class="form-inline d-flex justify-content-center md-form form-sm mt-0" action="/search">
+                    <input class="form-control form-control-sm ml-3 w-75" type="text" name="q" placeholder="Search Songs">
+                </form>
+                <a class="nav-item nav-link" href="/crt_reg/{{uid}}"><h3>Creator account</h3></a>
+                <a class="nav-item nav-link" href="/logout"><h3>Logout</h3></a>
+            </div>
+        </nav>
+        <h2> New Playlist</h2></br>
+        <form method="post" >
+            <input type="text" placeholder="Enter playlist name" name="pname" formaction="/create_plist/{{uid}}">
+        </br></br>
+        <div class="container">
+            <div style="height: 40rem;">
+            {% for song in sg.query.filter().all() %}
+            <div class="row">
+                    <div class="card cd-pl">
+                    <div class="card-body">
+                      <h4 class="card-title">{{song.name}}</h4>
+                        <input class="checkbox" type="checkbox" name="addsid" formaction="/create_plist/{{uid}}" value="{{song.song_id}}">
+                    </div>
+                    </div>
+                </br>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+            <button type="submit" name="name" formaction="/create_plist/{{uid}}">Add songs</button>
+        </form>
+    </body>
+</html>

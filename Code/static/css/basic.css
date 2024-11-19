@@ -1,0 +1,88 @@
+body{
+    background-color: rgb(250,235,215);
+    font-family: cursive;
+}
+.myForm {
+    min-width: 500px;
+    position:absolute;
+    text-align: left;
+    top: 30%;
+    left: 30%;
+    right: 30%;
+    font-size: 2rem
+}
+
+.form-group-bt{
+    display: flex;
+    justify-content: space-around;
+}
+.btn-lg{
+    background-color:rgb(208, 93, 101);
+}
+
+.bg-light{
+    color: white;
+    background-color: rgb(154, 119, 119);
+    border-bottom: 2px solid black;
+}
+
+.nav-link{
+    color: white;
+    text-decoration: none;
+}
+
+button{
+    background-color: rgb(208, 93, 101);
+    margin: 5px;
+  }
+
+.mb-3{
+    border: 3px dashed black;
+    background-color: rgb(218,150,155);
+    text-align: center;
+}
+
+.cd-song{
+    width: 15rem; height: 15rem;
+    background-color:palevioletred;
+    border: 3px solid black;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.cd-pl{
+    background-color:palevioletred;
+    border: 3px solid black;
+    border-radius: 2rem;
+    width: 30rem;
+}
+
+.cd-dash{
+    width: 20rem; height: 20rem;
+    background-color:palevioletred;
+    border: 3px solid black;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.cd-up{
+    background-color:palevioletred;
+    border: 3px solid black;
+    border-radius: 2rem;
+    width: 60rem;
+    text-align: center;
+}
+
+.cd-admin{
+    background-color:rgb(181, 128, 23);
+    border: 3px solid black;
+    border-radius: 2rem;
+    width: 25rem;
+    height: 25rem;
+    text-align: center;
+}
+
+.checkbox{
+    height: 25px;
+    width: 25px;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Uploading the song</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css')}}">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-text"><h1>Normal user page</h1></span>
+            <div class="navbar-nav" >
+                <form class="form-inline d-flex justify-content-center md-form form-sm mt-0" action="/search">
+                    <input class="form-control form-control-sm ml-3 w-75" type="text" name="q" placeholder="Search Songs">
+                </form>
+                <a class="nav-item nav-link" href="/upload_song/{{uid}}"><h3>Upload Song</h3></a>
+                <a class="nav-item nav-link" href="/logout"><h3>Logout</h3></a>
+            </div>
+        </nav>
+        <div class="form-group">
+            <div class="container">
+                <form class="myForm" id="uploadForm" method="post" action="/upload_song/{{uid}}">
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input class="form-control input-lg" type="name" name="title" placeholder="Song Title" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="singer">Singer</label>
+                        <input class="form-control input-lg" type="name" name="singer" placeholder="Singer" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="genre">Genre</label>
+                        <input class="form-control input-lg" type="name" name="genre" placeholder="Genre" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Release Date</label>
+                        <input class="form-control input-lg" type="text" name="date" placeholder="dd-mm-yy" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="singer">Lyrics</label>
+                        <textarea class="form-control input-lg" type="text" rows="10" name="lyrics" placeholder="Lyrics" required ></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="album">Album</label>
+                        <input class="form-control input-lg" type="name" name="album" placeholder="Album" />
+                    </div>
+                    <div class="form-group-bt">
+                        <input type="submit" name="submit" value="Upload" class="btn btn-success btn-lg" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

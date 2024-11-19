@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Welcome page</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css')}}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-text"><h1>Admin Dashboard</h1></span>
+            <div class="navbar-nav" >
+                <a class="nav-item nav-link" href="/tracks"><h3>Tracks</h3></a>
+                <a class="nav-item nav-link" href="/albums"><h3>Albums</h3></a>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="row">
+              <div class="col-xs-4">
+              </br>
+                <div class="card cd-admin">
+                  <div class="card-body">
+                    <h4 class="card-title">Normal Users</h4>
+                    <p class="card-text"><h1> {{ user_count }} </h1></p>
+                  </div>
+                </div>
+                </br>
+
+                <div class="card cd-admin">
+                  <div class="card-body">
+                    <h4 class="card-title">Creators</h4>
+                    <p class="card-text"><h1> {{ creator_count }} </h1></p>
+                  </div>
+                </div>
+                </br>
+
+              </div>
+
+              <div class="col-xs-8">
+                <h2>App performance</h2>
+                <div class="row">
+
+                  <div class="col-xs-4">
+
+                    <div class="card cd-admin">
+                      <div class="card-body">
+                        <h4 class="card-title">Tracks</h4>
+                        <p class="card-text"><h1> {{ song_count }} </h1></p>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <div class="col-xs-4">
+
+                      <div class="card cd-admin">
+                        <div class="card-body">
+                          <h4 class="card-title">Albums</h4>
+                          <p class="card-text"><h1> {{ album_count }} </h1></p>
+                        </div>
+                      </div>
+
+                  </div>
+
+                  <div class="col-xs-4">
+
+                    <div class="card cd-admin">
+                      <div class="card-body">
+                        <h4 class="card-title">Genre</h4>
+                        <p class="card-text"><h1> {{ genre_count }} </h1></p>
+                      </div>
+                    </div>
+                  </br>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </body>
+</html>

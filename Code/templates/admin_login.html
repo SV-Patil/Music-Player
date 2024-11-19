@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Administrator</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css')}}">
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-text"><h1>Administrator</h1></span>
+        </nav>
+        <center><h1>Administrator Login</h1></center>
+        <div class="form-group">
+            <div class="container">
+                <form class="myForm" method="post" action="/admin_dashboard">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input class="form-control input-lg" type="name" name="username" placeholder="name" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input class="form-control input-lg" type="password" name="password" placeholder="password" />
+                    </div>
+                    <div class="form-group-bt">
+                        <input type="submit" name="submit" class="btn btn-success btn-lg" value="Login"/>
+                    </div>
+                    <div style="text-align: center;">Don't have admin access? Go to <a href="/login">User login</a> </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

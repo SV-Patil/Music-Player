@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lyrics</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css')}}">
+        <script type="text/javascript" src="{{ url_for('static',filename='js/validation.js')}}"></script>
+    </head>
+
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <span class="navbar-text"><h1>Normal user page</h1></span>
+          <div class="navbar-nav" >
+              <a class="nav-item nav-link" href="/crt_reg/{{uid}}"><h3>Creator Account</h3></a>
+              <a class="nav-item nav-link" href="/logout"><h3>Logout</h3></a>
+          </div>
+      </nav>
+        <center><h1> LYRICS </h1></center>
+        <div class="container">
+            <div class="row" style="margin-top: 20px;">
+              <div class="col-xs-2">
+              </div>
+              <div class="col-xs-8">
+                <div class="card border-secondary mb-3">
+                    <div class="card-header"><h1> {{ song.name }} </h1></div>
+                    <div class="card-body">
+                      <h3 class="card-title">{{song.singer}} | {{song.date_cr}}
+                        <form id="ratingForm">
+                        <i id="1" data-song_id="{{song.song_id}}" class="bi bi-star"></i>
+                        <i id="2" data-song_id="{{song.song_id}}" class="bi bi-star"></i>
+                        <i id="3" data-song_id="{{song.song_id}}" class="bi bi-star"></i>
+                        <i id="4" data-song_id="{{song.song_id}}" class="bi bi-star"></i>
+                        <i id="5" data-song_id="{{song.song_id}}" class="bi bi-star"></i>
+                      </form>
+                      </h3>
+                      <p class="card-text"><h4>{{song.lyrics}}</h4></p>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-xs-2">
+              </div>
+            </div>
+          </div>
+    </body>
+    <script type="text/javascript">
+      initialize()
+    </script>
+</html>

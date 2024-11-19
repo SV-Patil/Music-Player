@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Creator Dashboard</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css')}}">
+        
+        <style>
+            .rw{
+                display: grid; grid-auto-columns:25rem;grid-auto-flow:column dense ;
+            }
+
+            .row{
+                overflow-y:scroll ;white-space:wrap; height: 40rem;
+            }
+        </style>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <span class="navbar-text"><h1>Creator page</h1></span>
+            <div class="navbar-nav" >
+                <form class="form-inline d-flex justify-content-center md-form form-sm mt-0" action="/search">
+                    <input class="form-control form-control-sm ml-3 w-75" type="text" name="q" placeholder="Search Songs">
+                </form>
+                <a class="nav-item nav-link" href="/upload_song/{{uid}}"><h3>Upload Song</h3></a>
+                <a class="nav-item nav-link" href="/login/{{uid}}/user_page"><h3>User Account</h3></a>
+                <a class="nav-item nav-link" href="/logout"><h3>Logout</h3></a>
+            </div>
+        </nav>
+
+        <div class="container">
+            <h2>DASHBOARD</h2>
+            <div class="rw">
+                <div class="card cd-dash">
+                <div class="card-body">
+                    <h4 class="card-title">Total Songs Uploaded</h4>
+                    <p class="card-text"><h1> {{sg.query.filter_by(singer=singer).count()}}</h1></p>
+                </div>
+                </div>
+
+                <div class="card cd-dash">
+                <div class="card-body">
+                    <h4 class="card-title">Average Rating</h4>
+                    <p class="card-text"><h1> {{avg_rt}}</h1></p>
+                </div>
+                </div>
+
+                <div class="card cd-dash">
+                <div class="card-body">
+                    <h4 class="card-title">Total Albums</h4>
+                    <p class="card-text"><h1> {{ta}} </h1></p>
+                </div>
+                </div>
+            </div>
+            <h2>Your Uploads</h2>
+            {% if sg.query.filter_by(singer=singer).count() == 0 %}
+                <h3> No songs uploaded yet! Upload new songs to start your journey as creator.</h3>
+                {% endif %}
+            <div class="row">
+                {% for song in sg.query.filter_by(singer=singer).all() %}
+                <div class="card cd-up">
+                <div class="card-body">
+                    <h4 class="card-title">{{song.name}}</h4>
+                    <form method="post">
+                        <button type="submit" name="sid" value="{{song.song_id}}" formaction="/show_lyrics">View Lyrics</button>
+                        <button type="submit" name="sid" value="{{song.song_id}}" formaction="/del_song/{{uid}}" >Delete</button>
+                    </form>
+                    <form>
+                        <button type="submit" formaction="/edit_song/{{song.song_id}}">Edit</button>
+                    </form>
+                </div>
+                </div>
+            </br>
+                {% endfor %}
+                
+            </div>
+        </div>
+    </body>
+</html>

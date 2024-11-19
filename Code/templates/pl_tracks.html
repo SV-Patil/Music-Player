@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Playlist Tracks</title>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css')}}">
+    </head>
+    <body>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <span class="navbar-text"><h1>Normal user page</h1></span>
+          <div class="navbar-nav" >
+              <form class="form-inline d-flex justify-content-center md-form form-sm mt-0" action="/search">
+                  <input class="form-control form-control-sm ml-3 w-75" type="text" name="q" placeholder="Search Songs">
+              </form>
+              <a class="nav-item nav-link" href="/crt_reg/{{uid}}" style="color: white;"><h3>Creator Account</h3></a>
+              <a class="nav-item nav-link" href="/logout" style="color: white;"><h3>Logout</h3></a>
+          </div>
+      </nav>
+        <center><h1> {{playlist_name}} </h1></center>
+        <div class="container">
+            <div class="row" style="margin-top: 20px;">
+              <div class="col-xs-2">
+              </div>
+              <div class="col-xs-8">
+                {% for trk in pl.query.filter_by(p_name=playlist_name).all() %}
+                <div class="card border-secondary mb-3">
+                    <div class="card-body">
+                      {% for s in sg.query.filter_by(song_id=trk.song_id).all() %}
+                      <h1 class="card-title">{{ s.name}}</h1>
+                      <div class="card-text">
+                        <form method="post">
+                          <button type="submit" name="sid" value={{s.song_id}} formaction="/show_lyrics">View Lyrics</button>
+                          </form>
+                      </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                </br>
+                {% endfor %}
+              <div class="col-xs-2">
+              </div>
+            </div>
+          </div>
+    </body>
+</html>
